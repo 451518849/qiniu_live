@@ -1,0 +1,33 @@
+PODS:
+  - Flutter (1.0.0)
+  - JGProgressHUD (2.0.3)
+  - qiniu_live (0.0.1):
+    - Flutter
+    - JGProgressHUD (= 2.0.3)
+    - QNRTCKit (= 2.3.0)
+  - QNRTCKit (2.3.0)
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - qiniu_live (from `.symlinks/plugins/qiniu_live/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JGProgressHUD
+    - QNRTCKit
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  qiniu_live:
+    :path: ".symlinks/plugins/qiniu_live/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  qiniu_live: b5f880c52804c0a6255ffc7de68aae43bd3525f7
+  QNRTCKit: 1ec69261ae4bcd48984eaf211a44f63a30c42bfc
+
+PODFILE CHECKSUM: 7fb83752f59ead6285236625b82473f90b1cb932
+
+COCOAPODS: 1.6.0.beta.2

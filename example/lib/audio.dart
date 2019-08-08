@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+import 'dart:async';
+
+import 'package:flutter/services.dart';
+import 'package:qiniu_live/qiniu_live.dart';
+
+class AudioPage extends StatefulWidget {
+  @override
+  _AudioPageState createState() => _AudioPageState();
+}
+
+class _AudioPageState extends State<AudioPage> {
+  static const EventChannel eventChannel =
+      const EventChannel('qiniu_live_users');
+  bool isSpeakerOn = false;
+  bool isMute = false;
+
+  @override
+  void initState() {
+    super.initState();
+    QiniuLive.publishAudio('url', "d8lk7l4ed", "test","", {
+      "user_id": "4",
+      "avatar_url":
+          "http://thirdqq.qlogo.cn/g?b=oidb&k=h22EA0NsicnjEqG4OEcqKyg&s=100",
+      "username": "jason1",
+      "is_admin": true
+    });
+
+    eventChannel
+        .receiveBroadcastStream("")
+        .listen(_onEvent, onError: _onError);
+  }
+
+  void _onEvent(Object event) {
+
+    print("qiniu_live_users:$event");
+    setState(() {
+
+    });
+  }
+
+  // 错误返回
+  void _onError(Object error) {}
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('音频直播'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                child: Text('打开扬声器'),
+                onPressed: () {
+                  QiniuLive.speakerOn(isSpeakerOn);
+                  isSpeakerOn = !isSpeakerOn;
+
+                },
+              ),
+              FlatButton(
+                child: Text('关闭声音'),
+                onPressed: () {
+                  QiniuLive.muteAudio(isMute);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
