@@ -21,7 +21,7 @@ Add this to your package's pubspec.yaml file:
 ## Getting Started
 
 
-####1、发布直播
+#### 1、发布直播
     QiniuLive.publishAudio('url', "d8lk7l4ed", "test","", {
       "user_id": "4",
       "avatar_url":
@@ -30,17 +30,17 @@ Add this to your package's pubspec.yaml file:
       "is_admin": true
     });
     
-####2、控制扬声器
+#### 2、控制扬声器
     QiniuLive.speakerOn(isSpeakerOn);
 
 
-####3、控制扬声器
+#### 3、控制扬声器
     QiniuLive.muteAudio(isMute);
 
-####4、退出直播
+#### 4、退出直播
     QiniuLive.unPublish();
 
-####4、获取实时出入人数
+#### 4、获取实时出入人数
 
     static const EventChannel eventChannel = const EventChannel('qiniu_live_users');
 
