@@ -60,22 +60,27 @@ public class QiniuLivePlugin implements MethodCallHandler {
         audioLive.publishAudio();
 
         audioLive.eventCallback = eventCallback;
-
+        result.success("success");
         break;
       case "leaveRoom":
         audioLive.leaveRoom();
+        result.success("success");
         break;
       case "unPublish":
         audioLive.unPublish();
+        result.success("success");
         break;
       case "muteAudio":
         audioLive.onToggleMic();
+        result.success("success");
         break;
       case "speakerOn":
         audioLive.onToggleSpeaker();
+        result.success("success");
         break;
       default:
         result.notImplemented();
+        result.error("notImplemented","",null);
     }
   }
 

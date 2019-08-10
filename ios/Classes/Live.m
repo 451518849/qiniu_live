@@ -37,20 +37,20 @@
     _liveResult = liveResult;
 }
 
-- (void)removeUsers:(NSString *)userId {
-    for (User *user in self.users) {
-        if ([user.userId isEqualToString:userId]) {
-            [self.users removeObject:user];
-            self.flutterBlock([self.users copy]);
-        }
-    }
-}
-
-- (void)addUsers:(NSString *)userData {
-    User *user = [User jsonToModel:userData];
-    [self.users addObject:user];
-    self.flutterBlock([self.users copy]);
-}
+//- (void)removeUsers:(NSString *)userId {
+//    for (User *user in self.users) {
+//        if ([user.userId isEqualToString:userId]) {
+//            [self.users removeObject:user];
+//            self.flutterBlock([self.users copy]);
+//        }
+//    }
+//}
+//
+//- (void)addUsers:(NSString *)userData {
+//    User *user = [User jsonToModel:userData];
+//    [self.users addObject:user];
+//    self.flutterBlock([self.users copy]);
+//}
 
 - (void)setupEngine {
     self.engine = [[QNRTCEngine alloc] init];
@@ -168,7 +168,9 @@
                                @"user":user,
                                @"op":@"join",
                                };
-        self.flutterBlock(info);
+        if(self.flutterBlock){
+            self.flutterBlock(info);
+        }
     }
 
 }
@@ -179,14 +181,16 @@
 - (void)RTCEngine:(QNRTCEngine *)engine didLeaveOfRemoteUserId:(NSString *)userId {
     NSString *str = [NSString stringWithFormat:@"远端用户: %@ 离开房间的回调", userId];
     NSLog(@"log:%@",str);
-//    [self removeUsers:userId];
-    
+ 
     NSDictionary *info = @{
                            @"user":@{@"user_id":userId},
                            @"op":@"leave",
                            };
     NSLog(@"info:%@",info);
-    self.flutterBlock(info);
+    if(self.flutterBlock){
+        self.flutterBlock(info);
+    }
+    
 }
 
 /**
