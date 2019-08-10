@@ -43,7 +43,6 @@ public class AudioLive implements QNRTCEngineEventListener {
     private boolean mMicEnabled = true;
     private boolean mSpeakerEnabled = true;
     public String roomName;
-    public String roomUrl;
     public String appId;
     public Map userData;
 

@@ -48,12 +48,10 @@ public class QiniuLivePlugin implements MethodCallHandler {
         setEventToFlutter();
         audioLive = AudioLive.getSingleton();
         audioLive.context = context;
-        String url = call.argument("url");
         String token = call.argument("token");
         String room = call.argument("room");
         Map user_data = call.argument("user_data");
         String app_id = call.argument("app_id");
-        audioLive.roomUrl = url;
         audioLive.roomName = room;
         audioLive.appId = app_id;
         audioLive.userData = user_data;

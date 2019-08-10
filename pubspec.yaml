@@ -1,8 +1,8 @@
 name: qiniu_live
-description: A new flutter plugin project.
-version: 0.0.1
-author:
-homepage:
+description: 七牛实时音频.
+version: 0.0.1+1
+author: xiaofwang
+homepage: https://github.com/451518849/qiniu_live
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

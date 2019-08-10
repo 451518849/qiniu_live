@@ -17,7 +17,6 @@ typedef void (^LiveResult)(id _Nullable result);
 
 @property (nonatomic, strong) QNRTCEngine      *engine;
 @property (nonatomic, copy  ) NSString         *token;
-@property (nonatomic, copy  ) NSString         *url;
 @property (nonatomic, copy  ) NSDictionary     *userData;//@{user_id,avatar_url,username,is_admin}
 @property (nonatomic, copy  ) NSString         *appId;
 @property (nonatomic, copy  ) NSString         *userId;

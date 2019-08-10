@@ -18,7 +18,7 @@ class _AudioPageState extends State<AudioPage> {
   @override
   void initState() {
     super.initState();
-    QiniuLive.publishAudio('url', "d8lk7l4ed", "test","", {
+    QiniuLive.publishAudio("d8lk7l4ed", "test","", {
       "user_id": "4",
       "avatar_url":
           "http://thirdqq.qlogo.cn/g?b=oidb&k=h22EA0NsicnjEqG4OEcqKyg&s=100",

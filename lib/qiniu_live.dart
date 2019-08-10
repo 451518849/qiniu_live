@@ -10,15 +10,18 @@ class QiniuLive {
     return version;
   }
 
-  static Future<String>  publishAudio(String url,String appId,String room,String token,Map<String,dynamic>userData,) async {
+  static Future<String>  publishAudio(String appId,String room,String token,Map<String,dynamic>userData,) async {
     final String result = await _channel.invokeMethod('publishAudio',{
-      "url":url,
       "app_id":appId,
       "room":room,
       "token":token,
       "user_data":userData
     });
     return result;
+  }
+
+  static Future<Null>  leaveRoom() async {
+    await _channel.invokeMethod('leaveRoom');
   }
 
   static Future<Null>  unPublish() async {

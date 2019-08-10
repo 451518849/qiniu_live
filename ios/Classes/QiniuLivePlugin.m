@@ -27,7 +27,6 @@ static NSObject<FlutterBinaryMessenger>* messager = nil;
   else if([@"publishAudio" isEqualToString:call.method]){
       
       NSString* token         = call.arguments[@"token"];
-      NSString* url           = call.arguments[@"url"];
       NSString* roomName      = call.arguments[@"room"];
       NSDictionary* userData  = call.arguments[@"user_data"];
       NSString* appId         = call.arguments[@"app_id"];
@@ -36,7 +35,6 @@ static NSObject<FlutterBinaryMessenger>* messager = nil;
       self.audioLive.userData = userData;
       self.audioLive.appId    = appId;
       self.audioLive.roomName = roomName;
-      self.audioLive.url      = url;
       self.audioLive.token    = token;
       
       [self.audioLive publishAudio];
@@ -46,7 +44,7 @@ static NSObject<FlutterBinaryMessenger>* messager = nil;
   else if([@"leaveRoom" isEqualToString:call.method]){
       self.audioLive          = [AudioLive shareInstance];
       [self.audioLive.engine leaveRoom];
-  }  else if([@"unpublish" isEqualToString:call.method]){
+  }  else if([@"unPublish" isEqualToString:call.method]){
       self.audioLive = [AudioLive shareInstance];
       [self.audioLive unpublish];
   }
