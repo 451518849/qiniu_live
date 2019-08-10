@@ -165,7 +165,9 @@ public class AudioLive implements QNRTCEngineEventListener {
         Map json = new HashMap();
         json.put("user",user);
         json.put("op",op);
-        eventCallback.success(json);
+        if (eventCallback != null){
+            eventCallback.success(json);
+        }
     }
 
 
