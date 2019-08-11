@@ -12,14 +12,11 @@ class AudioPage extends StatefulWidget {
 class _AudioPageState extends State<AudioPage> {
   static const EventChannel eventChannel =
       const EventChannel('qiniu_live_users');
-  bool isSpeakerOn = false;
-  bool isMute = false;
-
   @override
   void initState() {
     super.initState();
     QiniuLive.publishAudio("d8lk7l4ed", "test","", {
-      "user_id": "4",
+      "user_id": "11",
       "avatar_url":
           "http://thirdqq.qlogo.cn/g?b=oidb&k=h22EA0NsicnjEqG4OEcqKyg&s=100",
       "username": "jason1",
@@ -54,17 +51,16 @@ class _AudioPageState extends State<AudioPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               FlatButton(
-                child: Text('打开扬声器'),
+                child: Text('打开(关闭)扬声器'),
                 onPressed: () {
-                  QiniuLive.speakerOn(isSpeakerOn);
-                  isSpeakerOn = !isSpeakerOn;
+                  QiniuLive.speakerOn();
 
                 },
               ),
               FlatButton(
-                child: Text('关闭声音'),
+                child: Text('打开(关闭)声音'),
                 onPressed: () {
-                  QiniuLive.muteAudio(isMute);
+                  QiniuLive.muteAudio();
                 },
               ),
             ],

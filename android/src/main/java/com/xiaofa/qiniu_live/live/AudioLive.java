@@ -78,7 +78,10 @@ public class AudioLive implements QNRTCEngineEventListener {
     }
 
     public void publishAudio(){
+
         System.out.println("this.roomToken:"+this.roomToken);
+
+        //当token为空时走的时demo中获取token的方法，主要用于测试。
         if(this.roomToken.equals("")){
             new Thread(new Runnable() {
                 @Override
@@ -96,8 +99,17 @@ public class AudioLive implements QNRTCEngineEventListener {
     }
 
     private void initAudio(String token){
+
+        //初始化音视频引擎
         initQNRTCEngine();
-        initLocalTrackInfoList();
+
+        //只有管理员能够创建音频流
+        System.out.println("is_admin:"+userData.get("is_admin"));
+        if((boolean)userData.get("is_admin") == true){
+            initLocalTrackInfoList();
+        }
+
+        //加入房间并携带用户信息
         Gson gson = new Gson();
         mEngine.joinRoom(token,gson.toJson(userData));
     }
@@ -161,10 +173,18 @@ public class AudioLive implements QNRTCEngineEventListener {
 
     private void jsonToMap(String s,String op){
         Gson gson = new Gson();
-        Map user = gson.fromJson(s,Map.class);
         Map json = new HashMap();
-        json.put("user",user);
         json.put("op",op);
+        Map user;
+        if (op.equals("join")){
+             user = gson.fromJson(s,Map.class);
+        }else {
+            user = new HashMap();
+            user.put("user_id",s);
+        }
+
+        json.put("user",user);
+
         if (eventCallback != null){
             eventCallback.success(json);
         }
@@ -173,7 +193,10 @@ public class AudioLive implements QNRTCEngineEventListener {
 
     @Override
     public void onRemoteUserJoined(String s, String s1) {
+
         System.out.println("onRemoteUserJoined:"+s+" "+s1);
+
+        // 加入房间时返回的时userData字符串
         if (!s.equals("") && !s1.equals("")){
             jsonToMap(s1,"join");
         }
@@ -181,6 +204,9 @@ public class AudioLive implements QNRTCEngineEventListener {
 
     @Override
     public void onRemoteUserLeft(String s) {
+
+        //left 返回的时用户id，例如："1"
+        System.out.println("onRemoteUserLeft:"+s);
         if (!s.equals("")){
             jsonToMap(s,"leave");
         }

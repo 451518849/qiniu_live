@@ -28,11 +28,11 @@ class QiniuLive {
     await _channel.invokeMethod('unPublish');
   }
 
-    static Future<Null>  muteAudio(bool mute) async {
+    static Future<Null>  muteAudio() async {
     await _channel.invokeMethod('muteAudio');
   }
 
-    static Future<Null>  speakerOn(bool mute) async {
+    static Future<Null>  speakerOn() async {
     await _channel.invokeMethod('speakerOn');
   }
 }

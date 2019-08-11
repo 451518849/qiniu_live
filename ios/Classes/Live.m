@@ -67,20 +67,22 @@
 }
 
 - (void)requestToken {
+    NSLog(@"token1:%@",self.token);
     if ([self.token isEqualToString:@""]) {
+        NSLog(@"token1:%@",self.token);
         __weak typeof(self) wself = self;
         [QRDNetworkUtil requestTokenWithRoomName:self.roomName
                                            appId:self.appId
                                           userId:self.userId
                                completionHandler:^(NSError *error, NSString *token) {
-                                   
+
                                    if (error) {
                                        NSLog(@"log:请求 token 出错，请检查网络 %@",error.description);
                                        wself.liveResult(@"网络请求错误");
                                    } else {
                                        NSString *str = [NSString stringWithFormat:@"获取到 token: %@", token];
                                        NSLog(@"log:%@",str);
-                                       
+
                                        wself.token = token;
                                        [wself joinRTCRoom];
                                    }
@@ -88,7 +90,6 @@
     }else {
         [self joinRTCRoom];
     }
-
 }
 
 - (void)joinRTCRoom {
@@ -127,6 +128,7 @@
     
     if (QNRoomStateConnected == roomState) {
         NSLog(@"加入房间成功");
+        
         // 加入房间成功
         if (self.isAdmin) {
             [self publish];

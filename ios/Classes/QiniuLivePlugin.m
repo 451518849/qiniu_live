@@ -26,6 +26,8 @@ static NSObject<FlutterBinaryMessenger>* messager = nil;
   }
   else if([@"publishAudio" isEqualToString:call.method]){
       
+      [self openMicriphone];
+      
       NSString* token         = call.arguments[@"token"];
       NSString* roomName      = call.arguments[@"room"];
       NSDictionary* userData  = call.arguments[@"user_data"];
@@ -61,6 +63,20 @@ static NSObject<FlutterBinaryMessenger>* messager = nil;
     result(FlutterMethodNotImplemented);
   }
     
+}
+
+- (void)openMicriphone {
+    
+    if ([[AVAudioSession sharedInstance] respondsToSelector:@selector(requestRecordPermission:)]) {
+        [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+            if (granted) {
+                NSLog(@"允许使用麦克风！");
+            }
+            else {
+                NSLog(@"不允许使用麦克风！");
+            }
+        }];
+    }
 }
 
 - (void)listenUserEvent {

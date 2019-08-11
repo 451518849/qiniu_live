@@ -31,6 +31,7 @@
         }
         
         NSString *token = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"token:%@",token);
         dispatch_async(dispatch_get_main_queue(), ^{
             completionHandler(nil, token);
         });
