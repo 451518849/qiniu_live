@@ -141,7 +141,9 @@ public class AudioLive implements QNRTCEngineEventListener {
                 logAndToast("重新连接");
                 break;
             case CONNECTED:
-                mEngine.publishTracks(mLocalTrackList);
+                if((boolean)userData.get("is_admin") == true){
+                    mEngine.publishTracks(mLocalTrackList);
+                }
                 logAndToast("连接成功");
                 mIsJoinedRoom = true;
                 break;

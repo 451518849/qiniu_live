@@ -1,6 +1,6 @@
 name: qiniu_live
 description: 七牛实时音频.
-version: 0.0.2
+version: 0.0.2+1
 author: xiaofwang <451518849@qq.com>
 homepage: https://github.com/451518849/qiniu_live
 

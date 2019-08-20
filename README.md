@@ -20,6 +20,11 @@ Add this to your package's pubspec.yaml file:
 	
 ## Getting Started
 
+Android需要配置xml：
+
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+
 
 #### 1、发布直播（兼容测试）
     QiniuLive.publishAudio("appId", "roomName","token ", {
