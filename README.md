@@ -1,4 +1,9 @@
 # qiniu_live
+![](https://img.shields.io/badge/build-passing-brightgreen)
+![](https://img.shields.io/badge/version-0.0.2+1-orange)
+![](https://img.shields.io/badge/platform-ios%7Candroid-lightgrey)
+![](https://img.shields.io/badge/license-MIT-blue)
+
 
 封装了七牛的实时音频的功能，用于一对多的音频直播。通过控制是否时管理员（admin）来控制有多少个主播能发布声音，非管理员用户都为观众，只能听不能说话。
 可用于场景：FM电台、聊天室、讲座等。
@@ -14,7 +19,7 @@
 Add this to your package's pubspec.yaml file:
 
 	dependencies:
-		qiniu_live: ^0.0.2
+		qiniu_live: ^0.0.2+1
 		  
 	flutter packages get
 	
